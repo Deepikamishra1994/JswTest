@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorGrey"
+    android:layout_height="match_parent"
+    tools:context=".AddProductActivity">
+
+    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:text="@string/choose_state"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/white_solid_rectangle"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content">
+
+
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:hint="@string/last_name"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:id="@+id/spState"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorDarkGrey"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:text="@string/choose_district"
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/white_solid_rectangle"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content">
+
+
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:hint="@string/last_name"
+            android:id="@+id/spCity"
+            android:layout_marginStart="7dp"
+            android:layout_marginLeft="7dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorDarkGrey"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:text="@string/write_to_us"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="150dp"
+        android:background="@drawable/white_solid_rectangle"
+        android:layout_marginTop="10dp"
+          android:padding="15dp"
+         android:textSize="13sp"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="10dp"
+        android:gravity="start"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/etQuery"
+        android:textColorHint="@color/colorDarkGrey"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:minWidth="300dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="18dp"
+        android:textColor="@color/colorWhite"
+        android:layout_gravity="center"
+        android:layout_marginRight="18dp"
+        android:textSize="15sp"
+        android:layout_marginEnd="18dp"
+        android:text="@string/submit"
+        android:id="@+id/btnSubmit"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/blue_solid_rectangle"
+        />
+
+
+</LinearLayout>
