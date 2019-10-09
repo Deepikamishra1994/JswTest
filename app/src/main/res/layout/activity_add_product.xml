@@ -3,514 +3,491 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorGrey"
     android:layout_height="match_parent"
+    android:background="@color/colorGrey"
+    android:orientation="vertical"
     tools:context=".AddProductActivity">
 
-    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-
- <androidx.appcompat.widget.AppCompatTextView
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:layout_marginTop="15dp"
-     android:layout_marginStart="15dp"
-     android:layout_marginLeft="15dp"
-     android:textStyle="bold"
-     android:textSize="17sp"
-     android:textColor="@color/colorBlack"
-     android:text="@string/add_new_product"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:text="@string/date_of_purchase"
-            />
-
-
-
-
-            <androidx.appcompat.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:hint="@string/enter_date_of_purchase"
-                android:background="@drawable/white_solid_rectangle"
-                android:paddingLeft="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:paddingStart="10dp"
-                android:paddingRight="10dp"
-                android:paddingEnd="10dp"
-                android:textSize="14sp"
-                android:id="@+id/etDatePurchase"
-
-                android:textColorHint="@color/colorDarkGrey"
-                />
-
-
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:textColor="@color/colorBlack"
-         android:text="@string/product_name"
-            android:textSize="16sp"
-
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:background="@drawable/white_solid_rectangle"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_height="wrap_content">
-
-
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:hint="@string/last_name"
-                android:layout_marginStart="7dp"
-                android:layout_marginLeft="7dp"
-                android:id="@+id/spProductName"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorDarkGrey"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-
-                />
-
-
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:text="@string/size"
-            android:textSize="16sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:background="@drawable/white_solid_rectangle"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:layout_height="wrap_content">
-
-
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:hint="@string/last_name"
-                android:id="@+id/spSizes"
-                android:textColor="@color/colorWhite"
-                android:layout_marginStart="7dp"
-                android:layout_marginLeft="7dp"
-                android:textColorHint="@color/colorDarkGrey"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                />
-
-
-
-        </LinearLayout>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:text="@string/units"
-            android:textSize="16sp"
-
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:background="@drawable/white_solid_rectangle"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:layout_height="wrap_content">
-
-
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:hint="@string/last_name"
-                android:layout_marginStart="7dp"
-                android:layout_marginLeft="7dp"
-                android:id="@+id/spUnits"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorDarkGrey"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                />
-
-
-
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:text="@string/quantity"
-            android:textSize="16sp"
-
-            />
-
-
-
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:hint="@string/enter_quantity"
-            android:background="@drawable/white_solid_rectangle"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:paddingStart="10dp"
-            android:paddingRight="10dp"
-            android:paddingEnd="10dp"
-            android:id="@+id/etQunatity"
-            android:textSize="14sp"
-            android:singleLine="true"
-            android:inputType="phone"
-            android:textColorHint="@color/colorDarkGrey"
-            />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            android:visibility="gone"
-            android:layout_marginLeft="10dp"
-            android:text="@string/no_sheets"
-            android:textSize="16sp"
-            android:id="@+id/tvSheetTitle"
-
-            />
-
-
-
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:hint="@string/enter_sheet"
-            android:background="@drawable/white_solid_rectangle"
-            android:paddingLeft="10dp"
-            android:visibility="gone"
-            android:layout_marginTop="12dp"
-            android:paddingStart="10dp"
-            android:paddingRight="10dp"
-            android:paddingEnd="10dp"
-            android:id="@+id/etSheets"
-            android:textSize="14sp"
-            android:inputType="phone"
-            android:textColorHint="@color/colorDarkGrey"
-            />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:layout_marginTop="15dp"
-            android:text="@string/amount"
-            android:textSize="16sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            />
-
-
-
-
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="50dp"
-            android:hint="@string/enter_amount"
-            android:background="@drawable/white_solid_rectangle"
-            android:paddingLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:paddingStart="10dp"
-            android:paddingRight="10dp"
-            android:paddingEnd="10dp"
-            android:textSize="14sp"
-            android:id="@+id/etAmount"
-            android:inputType="phone"
-            android:textColorHint="@color/colorDarkGrey"
-            />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:text="@string/retailer_state"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:textSize="16sp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:background="@drawable/white_solid_rectangle"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:layout_height="wrap_content">
-
-
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:hint="@string/last_name"
-                android:id="@+id/spRetailerState"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorDarkGrey"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                />
-
-
-
-
-
-        </LinearLayout>
-
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:text="@string/retailer_district"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:textSize="16sp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:background="@drawable/white_solid_rectangle"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:layout_height="wrap_content">
-
-
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:hint="@string/last_name"
-                android:id="@+id/spRetailerDistrict"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorDarkGrey"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                />
-
-
-
-
-
-        </LinearLayout>
-
-
-
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorBlack"
-            android:text="@string/retailer"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:textSize="16sp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:background="@drawable/white_solid_rectangle"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:layout_height="wrap_content">
-
-
-
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:hint="@string/last_name"
-                android:id="@+id/spRetailer"
-                android:textColor="@color/colorWhite"
-                android:textColorHint="@color/colorDarkGrey"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                />
-
-
-
-
-
-        </LinearLayout>
-
-
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/tvAddRetailer"
-            android:textColor="@android:color/holo_blue_dark"
-            android:text="@string/add_new_retailer"/>
-
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:minWidth="300dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginStart="18dp"
-            android:textColor="@color/colorWhite"
-            android:layout_gravity="center"
-            android:layout_marginRight="18dp"
-            android:layout_marginEnd="18dp"
-            android:text="@string/add_product"
-            android:id="@+id/btnAddProduct"
-            android:layout_marginTop="35dp"
-            android:textSize="16sp"
-            android:background="@drawable/blue_solid_rectangle"
-            />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="@string/total_value"
+                android:text="@string/add_new_product"
                 android:textColor="@color/colorBlack"
-                android:textSize="16sp"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:text="0"
-                android:id="@+id/tvValue"
-                android:textSize="16sp"
-                android:layout_height="wrap_content"
-                />
-
-
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-              android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rlProduct"
-            android:layout_marginTop="10dp"
-            android:minHeight="200dp">
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:minWidth="300dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginStart="18dp"
-            android:textColor="@color/colorWhite"
-            android:layout_gravity="center"
-            android:layout_marginRight="18dp"
-            android:layout_marginEnd="18dp"
-            android:text="@string/submit"
-            android:textSize="15sp"
-
-            android:id="@+id/btnSubmit"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/blue_solid_rectangle"
-            />
-
-    </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/date_of_purchase"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
 
 
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etDatePurchase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:hint="@string/enter_date_of_purchase"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="@color/colorDarkGrey"
+
+                    android:textSize="14sp" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+
+                    android:text="@string/product_name"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spProductName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="@string/last_name"
+                        android:minHeight="50dp"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorDarkGrey"
+
+                        />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/size"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spSizes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="@string/last_name"
+                        android:minHeight="50dp"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorDarkGrey" />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+
+                    android:text="@string/units"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spUnits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="@string/last_name"
+                        android:minHeight="50dp"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorDarkGrey" />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/quantity"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etQunatity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:hint="@string/enter_quantity"
+                    android:inputType="phone"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/colorDarkGrey"
+                    android:textSize="14sp" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSheetTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/no_sheets"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSheets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:hint="@string/enter_sheet"
+                    android:inputType="phone"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="@color/colorDarkGrey"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/amount"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:hint="@string/enter_amount"
+                    android:inputType="phone"
+                    android:minHeight="50dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingRight="10dp"
+                    android:textColorHint="@color/colorDarkGrey"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/retailer_state"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:orientation="horizontal">
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spRetailerState"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="@string/last_name"
+                        android:minHeight="50dp"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorDarkGrey" />
+
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/retailer_district"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spRetailerDistrict"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="@string/last_name"
+                        android:minHeight="50dp"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorDarkGrey" />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/retailer"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/tv_retrailer"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/retailer"
+                    android:textSize="16sp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:layout_height="wrap_content" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="@string/or"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/retailer"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/white_solid_rectangle"
+                    android:orientation="horizontal">
+
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spRetailer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="@string/last_name"
+                        android:minHeight="50dp"
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorDarkGrey" />
+
+
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAddRetailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="end"
+                    android:text="@string/add_new_retailer"
+                    android:textColor="@android:color/holo_blue_dark" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAddProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/blue_solid_rectangle"
+                    android:minWidth="300dp"
+                    android:text="@string/add_product"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/total_value"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rlProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:minHeight="200dp"></androidx.recyclerview.widget.RecyclerView>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/blue_solid_rectangle"
+                    android:minWidth="300dp"
+
+                    android:text="@string/submit"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp" />
+
+
+
+            </LinearLayout>
 
 
         </LinearLayout>

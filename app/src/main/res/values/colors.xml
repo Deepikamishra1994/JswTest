@@ -11,4 +11,7 @@
     <color name="colorLightWhite">#E4E9E5E5</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLightBlue">#6633b5e5</color>
+    <color name="colorRed">#f43d3d</color>
+    <color name="colorOrange">#f79c2d</color>
+    <color name="colorGreen">#2A962F</color>
 </resources>

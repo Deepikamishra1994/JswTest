@@ -32,9 +32,8 @@ public class ApplicationConstants {
 
 
   //  public static final String baseApi = "http://40.122.40.10/jsw_demo/";
-
-   public static final String baseApi = "http://40.122.40.10/jsw_demo/";
-//    public static final String baseApi = "http://52.158.208.73/jsw_loyalty/";
+   // public static final String baseApi = "http://40.122.40.10/jsw_demo/";
+  public static final String baseApi = "http://52.158.208.73/jsw_loyalty/";
 
 
     public static final String imageBaseUrl="http://40.122.40.10/jsw_demo/";

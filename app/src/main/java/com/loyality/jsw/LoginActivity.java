@@ -176,7 +176,15 @@ public class LoginActivity extends AppCompatActivity implements PostDispatchs, G
             case LOGIN:
 
                 LoginResponseModel loginResponseModel = (LoginResponseModel) body;
-                Prefrences.getInstance().storeUserData(LoginActivity.this, "", loginResponseModel.getUserType(), loginResponseModel.getToken());
+
+                /*
+                Need to change the user type
+               */
+               // Prefrences.getInstance().storeUserData(LoginActivity.this, "", loginResponseModel.getUserType(), loginResponseModel.getToken());
+
+                Prefrences.getInstance().storeUserData(LoginActivity.this, "","FABRICATOR", loginResponseModel.getToken());
+
+
                 getProfile();
 
                 break;
@@ -187,6 +195,7 @@ public class LoginActivity extends AppCompatActivity implements PostDispatchs, G
                 RegisterModel registerModel = (RegisterModel) body;
 
                 Prefrences.getInstance().storeUserProfile(LoginActivity.this, registerModel.getFirstName(), registerModel.getMobileNo(), "");
+
 
                 if (Prefrences.getInstance().getPartnerType(LoginActivity.this).equalsIgnoreCase("FABRICATOR")) {
 

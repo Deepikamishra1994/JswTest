@@ -1,6 +1,8 @@
 package com.loyality.jsw.serverrequesthandler.models;
 
-public class TranscationModel {
+import java.io.Serializable;
+
+public class TranscationModel implements Serializable {
 
     private String transactionId;
     private String product;

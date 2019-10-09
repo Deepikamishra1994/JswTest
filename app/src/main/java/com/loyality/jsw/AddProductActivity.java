@@ -2,12 +2,19 @@ package com.loyality.jsw;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -19,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.loyality.jsw.Constants.DatePickerFragment;
 import com.loyality.jsw.adapters.AddProductAdapter;
-import com.loyality.jsw.adapters.CityAdapter;
+import com.loyality.jsw.adapters.CustomRetailerListAdapter;
 import com.loyality.jsw.adapters.DistrictAdapter;
 import com.loyality.jsw.adapters.EqualSpacingItemDecoration;
 import com.loyality.jsw.adapters.ProductAdapter;
@@ -34,7 +41,6 @@ import com.loyality.jsw.serverrequesthandler.GetDispatchs;
 import com.loyality.jsw.serverrequesthandler.PostDispatchs;
 import com.loyality.jsw.serverrequesthandler.ResponseTypes;
 import com.loyality.jsw.serverrequesthandler.models.AddProductModel;
-import com.loyality.jsw.serverrequesthandler.models.CityModel;
 import com.loyality.jsw.serverrequesthandler.models.DistrictModel;
 import com.loyality.jsw.serverrequesthandler.models.ProductModel;
 import com.loyality.jsw.serverrequesthandler.models.RetailerModel;
@@ -89,10 +95,14 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
     AppCompatSpinner spRetailerDistrict;
     @BindView(R.id.tvValue)
     AppCompatTextView tvValue;
-
+   static List<RetailerModel> retailerModelsList = new ArrayList<>();
     double totalValue;
+    @BindView(R.id.tv_retrailer)
+    AppCompatAutoCompleteTextView tvRetrailer;
+    String[] sa = new String[]{"apple", "mango", "banana", "apple mango", "mango banana"};
 
-    @Override
+
+@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
@@ -105,219 +115,301 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
                 onBackPressed();
             }
         });
-        btnAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//    ArrayAdapter<String> aAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, sa);
+//
+//    tvRetrailer.setAdapter(aAdapter);
 
-                if (addProudctValidate()) {
+        Log.e("retailer list size",String.valueOf(retailerModelsList.size()));
+        CustomRetailerListAdapter adapter = new CustomRetailerListAdapter(this,
+                R.layout.retailer_list_item, retailerModelsList);
+        tvRetrailer.setAdapter(adapter);
+        ;
 
-                    UtilityMethods.showToast(AddProductActivity.this, "Product Added Successfully");
-                }
-            }
-        });
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    tvRetrailer.addTextChangedListener(new TextWatcher() {
 
-                if (addProductModelList.size() > 0) {
+        public void afterTextChanged(Editable s) {
 
-                    addProduct(addProductModelList);
-                } else {
+        }
 
-                    UtilityMethods.showToast(AddProductActivity.this, "Add Product");
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after) {
 
-                }
-            }
-        });
+        }
+        public void onTextChanged(CharSequence s, int start, int before,
+                                  int count) {
 
-        etDatePurchase.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
+            CustomRetailerListAdapter adapter = new CustomRetailerListAdapter(AddProductActivity.this,
+                    R.layout.retailer_list_item, retailerModelsList);
+            tvRetrailer.setThreshold(1);
+            tvRetrailer.setAdapter(adapter);
 
-                if (hasFocus) {
-                    showDatePickerDialog(v);
-                }
+        }});
 
 
-            }
-        });
-        etDatePurchase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(v);
-            }
-        });
+        tvRetrailer.setOnItemClickListener(onItemClickListener);
 
 
-        spProductName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position > 0) {
 
-                    ProductModel productModel = (ProductModel) spProductName.getAdapter().getItem(position);
 
-                    productName = productModel.getProductName();
+    //Creating the instance of ArrayAdapter containing list of fruit names
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+//                (this, android.R.layout.select_dialog_item, retailerModelsList);
+        btnAddProduct.setOnClickListener(new View.OnClickListener()
 
+    {
+        @Override
+        public void onClick (View v){
 
-                    getProductDetail(productModel.getProductName());
+        if (addProudctValidate()) {
 
-                } else {
+            UtilityMethods.showToast(AddProductActivity.this, "Product Added Successfully");
+        }
+    }
+    });
 
-                    spSizes.setAdapter(null);
-                    spUnits.setAdapter(null);
-                    etQunatity.setText("");
-                    etAmount.setText("");
-                    productName = "";
-                    size = "";
-                    unit = "";
-                    price = "";
-                }
+        btnSubmit.setOnClickListener(new View.OnClickListener()
 
-            }
+    {
+        @Override
+        public void onClick (View v){
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        if (addProductModelList.size() > 0) {
 
-            }
-        });
+            addProduct(addProductModelList);
+        } else {
 
-        spUnits.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            UtilityMethods.showToast(AddProductActivity.this, "Add Product");
 
+        }
+    }
+    });
 
-                unit = (String) spUnits.getAdapter().getItem(position);
+        etDatePurchase.setOnFocusChangeListener(new View.OnFocusChangeListener()
 
+    {
+        @Override
+        public void onFocusChange (View v,boolean hasFocus){
 
-                if (!TextUtils.isEmpty(unit)) {
+        if (hasFocus) {
+          //  showDatePickerDialog(v);
+        }
 
-                    if (unit.equalsIgnoreCase("r.f") || unit.equalsIgnoreCase("r.m")) {
 
-                        etSheets.setVisibility(View.VISIBLE);
-                        tvSheetTitle.setVisibility(View.VISIBLE);
+    }
+    });
+        etDatePurchase.setOnClickListener(new View.OnClickListener()
 
-                    } else {
+    {
+        @Override
+        public void onClick (View v){
+        showDatePickerDialog(v);
+    }
+    });
 
-                        etSheets.setVisibility(View.GONE);
-                        tvSheetTitle.setVisibility(View.GONE);
 
-                    }
+        spProductName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 
+    {
+        @Override
+        public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
 
-                }
+        if (position > 0) {
 
-            }
+            ProductModel productModel = (ProductModel) spProductName.getAdapter().getItem(position);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            productName = productModel.getProductName();
 
-            }
-        });
 
+            getProductDetail(productModel.getProductName());
 
-        spSizes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        } else {
 
-
-                size = (String) spSizes.getAdapter().getItem(position);
-                getProductUnits(productName, size);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        tvAddRetailer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivityForResult(new Intent(AddProductActivity.this, AddNewRetailerActivity.class), 1000);
-
-            }
-        });
-
-        spRetailer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                RetailerModel retailerModel = (RetailerModel) spRetailer.getAdapter().getItem(position);
-
-                retailer = retailerModel.getRetailerId();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        spRetailerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position > 0) {
-
-                    StateModel stateModel = (StateModel) spRetailerState.getAdapter().getItem(position);
-
-                    state = stateModel.getState();
-                    getDistrict(stateModel.getState());
-
-                } else {
-
-
-                    state = "";
-                    district = "";
-                    retailer = "";
-                    spRetailerDistrict.setAdapter(null);
-                    spRetailer.setAdapter(null);
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        spRetailerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-
-                if (position > 0) {
-
-
-                    DistrictModel districtModel = (DistrictModel) spRetailerDistrict.getAdapter().getItem(position);
-                    district = districtModel.getDistrict();
-                    getAllRetailers(district);
-                } else {
-                    retailer = "";
-                    spRetailer.setAdapter(null);
-
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        setAdapter();
-        getAllProduct();
-
-        //  getAllRetailers();
+            spSizes.setAdapter(null);
+            spUnits.setAdapter(null);
+            etQunatity.setText("");
+            etAmount.setText("");
+            productName = "";
+            size = "";
+            unit = "";
+            price = "";
+        }
 
     }
 
+        @Override
+        public void onNothingSelected (AdapterView < ? > parent){
+
+    }
+    });
+
+        spUnits.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+
+    {
+        @Override
+        public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
+
+
+        unit = (String) spUnits.getAdapter().getItem(position);
+
+
+        if (!TextUtils.isEmpty(unit)) {
+
+            if (unit.equalsIgnoreCase("r.f") || unit.equalsIgnoreCase("r.m")) {
+
+                etSheets.setVisibility(View.VISIBLE);
+                tvSheetTitle.setVisibility(View.VISIBLE);
+
+            } else {
+
+                etSheets.setVisibility(View.GONE);
+                tvSheetTitle.setVisibility(View.GONE);
+
+            }
+
+
+        }
+
+    }
+
+        @Override
+        public void onNothingSelected (AdapterView < ? > parent){
+
+    }
+    });
+
+
+        spSizes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+
+    {
+        @Override
+        public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
+
+
+        size = (String) spSizes.getAdapter().getItem(position);
+        getProductUnits(productName, size);
+
+    }
+
+        @Override
+        public void onNothingSelected (AdapterView < ? > parent){
+
+    }
+    });
+
+        tvAddRetailer.setOnClickListener(new View.OnClickListener()
+
+    {
+        @Override
+        public void onClick (View v){
+
+        startActivityForResult(new Intent(AddProductActivity.this, AddNewRetailerActivity.class), 1000);
+
+    }
+    });
+
+        spRetailer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+
+    {
+        @Override
+        public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
+
+        RetailerModel retailerModel = (RetailerModel) spRetailer.getAdapter().getItem(position);
+        tvRetrailer.setText("");
+        retailer="";
+
+        retailer = retailerModel.getRetailerId();
+
+    }
+
+        @Override
+        public void onNothingSelected (AdapterView < ? > parent){
+
+    }
+    });
+        spRetailerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+
+    {
+        @Override
+        public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
+
+        if (position > 0) {
+
+            StateModel stateModel = (StateModel) spRetailerState.getAdapter().getItem(position);
+
+            state = stateModel.getState();
+            getDistrict(stateModel.getState());
+
+        } else {
+
+
+            state = "";
+            district = "";
+            retailer = "";
+            spRetailerDistrict.setAdapter(null);
+            spRetailer.setAdapter(null);
+
+        }
+    }
+
+        @Override
+        public void onNothingSelected (AdapterView < ? > parent){
+
+    }
+    });
+
+        spRetailerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+
+    {
+        @Override
+        public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
+
+
+        if (position > 0) {
+
+
+            DistrictModel districtModel = (DistrictModel) spRetailerDistrict.getAdapter().getItem(position);
+            district = districtModel.getDistrict();
+            getAllRetailers(district);
+        } else {
+            retailer = "";
+            spRetailer.setAdapter(null);
+
+        }
+
+    }
+
+        @Override
+        public void onNothingSelected (AdapterView < ? > parent){
+
+    }
+    });
+
+    setAdapter();
+
+    getAllProduct();
+
+    //  getAllRetailers();
+
+}
+
+
+  private   AdapterView.OnItemClickListener onItemClickListener =
+            new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                    RetailerModel retailerModel = (RetailerModel) spRetailer.getAdapter().getItem(i);
+
+                    retailer = retailerModel.getRetailerId();
+                    Toast.makeText(AddProductActivity.this,
+                            "Clicked item from auto completion list "
+                                    + retailer
+                            , Toast.LENGTH_SHORT).show();
+                }
+            };
     public void getDistrict(String id) {
 
         if (UtilityMethods.isNetworkAvailable(this)) {
@@ -414,7 +506,6 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
             double productQty = 0;
 
 
-
             rlProduct.getAdapter().notifyDataSetChanged();
         }
 
@@ -503,12 +594,13 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
             case RETAILERS:
 
                 List<RetailerModel> retailerModels = (List<RetailerModel>) body;
+                retailerModelsList = retailerModels;
+
                 if (retailerModels != null && retailerModels.size() > 0) {
 
 
                     setRetailerAdapter(retailerModels);
-                }
-                else{
+                } else {
 
                     retailer = "";
                     spRetailer.setAdapter(null);
@@ -551,7 +643,7 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
 
                 }
 
-              //  getCities(state);
+                //  getCities(state);
 
                 break;
 
@@ -607,6 +699,7 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
         spRetailerDistrict.setAdapter(new DistrictAdapter(AddProductActivity.this, cityModels));
 
     }
+
     public void addProduct(List<AddProductModel> addProductModels) {
 
         if (UtilityMethods.isNetworkAvailable(this)) {
@@ -676,7 +769,6 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
         }
 
     }
-
 
 
     @Override

@@ -1,9 +1,11 @@
 package com.loyality.jsw.adapters;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -13,9 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.loyality.jsw.ActivitiesHistoryActivity;
 import com.loyality.jsw.R;
+import com.loyality.jsw.TransactionHistoryDetail;
 import com.loyality.jsw.TranscationHistoryActivity;
 import com.loyality.jsw.serverrequesthandler.models.TranscationModel;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapter.MyViewHolder> {
@@ -41,26 +45,49 @@ public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapte
     public void onBindViewHolder(@NonNull TransHistoryAdapter.MyViewHolder holder, int position) {
 
        TranscationModel transcationModel = transcationModels.get(position);
-       holder.tvTranscation.setText(transcationModel.getTransactionId());
-       holder.tvSize.setText(transcationModel.getSize());
-       holder.tvStatus.setText(transcationModel.getStatus());
+    // holder.tvTranscation.setText(transcationModel.getTransactionId());
+//       holder.tvSize.setText(transcationModel.getSize());
        holder.tvRetailer.setText(transcationModel.getRetailer());
-       holder.tvAmount.setText(transcationModel.getAmount());
-       holder.tvProduct.setText(transcationModel.getProduct());
-       holder.tvQuantity.setText(transcationModel.getQuantity());
-       holder.tvUnit.setText(transcationModel.getUnit());
-       holder.tvDate.setText(transcationModel.getDate());
+//       holder.tvAmount.setText(transcationModel.getAmount());
+//       holder.tvProduct.setText(transcationModel.getProduct());
+//       holder.tvQuantity.setText(transcationModel.getQuantity());
+//       holder.tvUnit.setText(transcationModel.getUnit());
+//       holder.tvDate.setText(transcationModel.getDate());
+        holder.tvStatus.setText(transcationModel.getStatus());
+           if(!TextUtils.isEmpty(transcationModel.getStatus())) {
 
-       if(TextUtils.isEmpty(transcationModel.getSheets())){
+               switch (transcationModel.getStatus()) {
 
-           holder.llSheets.setVisibility(View.GONE);
-       }
-       else{
+                   case "PENDING":
 
-           holder.llSheets.setVisibility(View.VISIBLE);
-           holder.tvSheets.setText(transcationModel.getSheets());
+                       holder.tvStatus.setTextColor(transcationHistoryActivity.getResources().getColor(R.color.colorOrange));
 
-       }
+                       break;
+
+                   case "APRROVED":
+
+                       holder.tvStatus.setTextColor(transcationHistoryActivity.getResources().getColor(R.color.colorGreen));
+
+                       break;
+                   case "REJECTED":
+
+                       holder.tvStatus.setTextColor(transcationHistoryActivity.getResources().getColor(R.color.colorRed));
+
+                       break;
+               }
+           }
+
+           holder.iv_view.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   Intent intent= new Intent(transcationHistoryActivity, TransactionHistoryDetail.class);
+                   transcationHistoryActivity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                   intent.putExtra("transactionHistory",(Serializable) transcationModel);
+                   transcationHistoryActivity.startActivity(intent);
+
+               }
+           });
+
 
     }
 
@@ -76,36 +103,37 @@ public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapte
 
 
         AppCompatTextView tvTranscation;
-
-        AppCompatTextView tvProduct;
-
-        AppCompatTextView tvQuantity;
-
-        AppCompatTextView tvUnit;
-        AppCompatTextView tvSize;
-
-        AppCompatTextView tvAmount;
+//
+//        AppCompatTextView tvProduct;
+//
+//        AppCompatTextView tvQuantity;
+//
+//        AppCompatTextView tvUnit;
+//        AppCompatTextView tvSize;
+//
+//        AppCompatTextView tvAmount;
         AppCompatTextView tvRetailer;
         AppCompatTextView tvStatus;
-        AppCompatTextView  tvDate;
-        AppCompatTextView tvSheets;
-        LinearLayout llSheets;
+//        AppCompatTextView  tvDate;
+        ImageView iv_view;
+//        LinearLayout llSheets,llRoot;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvTranscation = itemView.findViewById(R.id.tvTranscationId);
-            tvProduct = itemView.findViewById(R.id.tvProduct);
-            tvSize = itemView.findViewById(R.id.tvSize);
-            tvQuantity = itemView.findViewById(R.id.tvQunatity);
-            tvUnit = itemView.findViewById(R.id.tvUnit);
-            tvAmount = itemView.findViewById(R.id.tvAmount);
+           // tvTranscation = itemView.findViewById(R.id.tvTranscationId);
+//            tvProduct = itemView.findViewById(R.id.tvProduct);
+//            tvSize = itemView.findViewById(R.id.tvSize);
+//            tvQuantity = itemView.findViewById(R.id.tvQunatity);
+//            tvUnit = itemView.findViewById(R.id.tvUnit);
+//            tvAmount = itemView.findViewById(R.id.tvAmount);
             tvRetailer = itemView.findViewById(R.id.tvRetailer);
             tvStatus = itemView.findViewById(R.id.tvStatus);
-            tvDate = itemView.findViewById(R.id.tvDate);
-            tvSheets = itemView.findViewById(R.id.tvSheets);
-            llSheets = itemView.findViewById(R.id.llSheets);
+//            tvDate = itemView.findViewById(R.id.tvDate);
+            iv_view = itemView.findViewById(R.id.iv_view);
+//            llSheets = itemView.findViewById(R.id.llSheets);
+//            llRoot = itemView.findViewById(R.id.llRoot);
 
 
         }

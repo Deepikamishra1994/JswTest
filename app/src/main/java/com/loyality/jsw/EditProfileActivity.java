@@ -86,6 +86,7 @@ public class EditProfileActivity extends AppCompatActivity implements GetDispatc
     AppCompatSpinner spBloodGroup;
     String bloodGroup;
     ArrayList<String> bloodlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -191,7 +192,7 @@ public class EditProfileActivity extends AppCompatActivity implements GetDispatc
 
                 } else {
 
-                    bloodGroup= "";
+                    bloodGroup = "";
 
                 }
             }
@@ -201,7 +202,6 @@ public class EditProfileActivity extends AppCompatActivity implements GetDispatc
 
             }
         });
-
 
 
         spCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -423,6 +423,8 @@ public class EditProfileActivity extends AppCompatActivity implements GetDispatc
                 etTMASsingedId.setText(registerModel.getTmAssignedId());
                 etTMMobile.setText(registerModel.getTmAssignedMobileNo());
                 etTMName.setText(registerModel.getTmAssignedName());
+                etTMName.setEnabled(false);
+
                 etFirstName.setText(registerModel.getFirstName());
                 etDob.setText(registerModel.getDob());
                 etLastName.setText(registerModel.getLastName());
@@ -450,9 +452,9 @@ public class EditProfileActivity extends AppCompatActivity implements GetDispatc
                     }
                 }
 
-                for(int i = 0;i<bloodlist.size();i++){
+                for (int i = 0; i < bloodlist.size(); i++) {
 
-                    if(bloodGroup.equalsIgnoreCase(bloodlist.get(i))){
+                    if (bloodGroup.equalsIgnoreCase(bloodlist.get(i))) {
 
                         spBloodGroup.setSelection(i);
                     }
@@ -491,79 +493,81 @@ public class EditProfileActivity extends AppCompatActivity implements GetDispatc
         if (TextUtils.isEmpty(etFirstName.getText())) {
 
             etFirstName.setError("Enter First Name");
+            etFirstName.requestFocus();
             return false;
         } else if (TextUtils.isEmpty(etLastName.getText())) {
 
             etLastName.setError("Enter Last Name");
-
+            etLastName.requestFocus();
             return false;
         } else if (TextUtils.isEmpty(etMobile.getText())) {
             etMobile.setError("Enter Mobile Name");
+            etMobile.requestFocus();
 
             return false;
         } else if (TextUtils.isEmpty(etEmergencyNo.getText())) {
             etEmergencyNo.setError("Enter Emergency No.");
+            etEmergencyNo.requestFocus();
 
             return false;
         } else if (TextUtils.isEmpty(etDob.getText())) {
 
             etDob.setError("Enter Dob");
+            etDob.requestFocus();
 
             return false;
-        }else if (TextUtils.isEmpty(bloodGroup)) {
+        } else if (TextUtils.isEmpty(bloodGroup)) {
 
             UtilityMethods.showToast(EditProfileActivity.this, "Select Blood Group");
 
             return false;
-        }else if (TextUtils.isEmpty(etAddress.getText())) {
+        } else if (TextUtils.isEmpty(etAddress.getText())) {
 
             etAddress.setError("Enter Address");
+            etAddress.requestFocus();
 
 
             return false;
         } else if (TextUtils.isEmpty(etPincode.getText())) {
 
             etPincode.setError("Enter Pincode");
+            etPincode.requestFocus();
 
             return false;
         } else if (TextUtils.isEmpty(state)) {
 
             UtilityMethods.showToast(EditProfileActivity.this, "Select State");
             return false;
-        } else if (TextUtils.isEmpty(city)) {
+        } /*else if (TextUtils.isEmpty(city)) {
             UtilityMethods.showToast(EditProfileActivity.this, "Select City");
 
             return false;
-        } else if (TextUtils.isEmpty(district)) {
+        }*/ else if (TextUtils.isEmpty(district)) {
 
             UtilityMethods.showToast(EditProfileActivity.this, "Select District");
             return false;
-        }
-
-        else if (TextUtils.isEmpty(etPincode.getText())) {
+        } else if (TextUtils.isEmpty(etPincode.getText())) {
 
             etPincode.setError("Enter Pin code");
+            etPincode.requestFocus();
             return false;
-        }
-
-        else if(etEmergencyNo.getText().length()!=10){
+        } else if (etEmergencyNo.getText().length() != 10) {
 
             etEmergencyNo.setError("Incorrect Emergency No.");
+            etEmergencyNo.requestFocus();
+
             return false;
 
-        }
-
-
-        else if(etPincode.getText().toString().length()!=6){
-
-                etPincode.setError("Incorrect Pin code");
-                return false;
+        } else if (etPincode.getText().toString().length() != 6) {
+            etPincode.requestFocus();
+            etPincode.setError("Incorrect Pin code");
+            return false;
 
 
         }
 
 
-        Log.e("Emggefeecd",""+etEmergencyNo.getText().length());
+        Log.e("Emggefeecd", "" + etEmergencyNo.getText().length());
 
         registerModel.setFirstName(String.valueOf(etFirstName.getText()));
         registerModel.setLastName(String.valueOf(etLastName.getText()));

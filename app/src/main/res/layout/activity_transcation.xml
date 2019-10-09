@@ -55,22 +55,58 @@
        android:text="@string/no_data_found"
        android:id="@+id/tvNoDataFound"
        android:gravity="center"
+       android:visibility="gone"
        android:layout_height="match_parent" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
+    <TableLayout
+        android:id="@+id/tl_header"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="20dp"
-       android:visibility="gone"
         android:layout_marginRight="5dp"
-        android:id="@+id/rlHistory"
-        tools:listitem="@layout/custom_transcation"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    </androidx.recyclerview.widget.RecyclerView>
+
+    <TableRow android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:gravity="center"
+            android:text="Retailer Name"
+            android:layout_width="0dp"
+            android:layout_column="0"
+            android:layout_weight="2"/>
+        <TextView
+            android:text="Status"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_column="1"
+            android:layout_weight="1">
+        </TextView>
+        <TextView android:text="Action"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_column="2"
+            android:layout_weight="1">
+        </TextView>
+    </TableRow>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:id="@+id/rlHistory"
+            android:background="@color/mdtp_white"
+            tools:listitem="@layout/custom_transcation"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </TableLayout>
+
+<!--<HorizontalScrollView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
+
+<!--</HorizontalScrollView>-->
+
+
 
 
 

@@ -3,6 +3,7 @@ package com.loyality.jsw;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TableLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.loyality.jsw.adapters.EqualSpacingItemDecoration;
 import com.loyality.jsw.adapters.RetailerTransAdapter;
 import com.loyality.jsw.adapters.SizeUnitsAdapter;
-import com.loyality.jsw.adapters.TransHistoryAdapter;
 import com.loyality.jsw.common.UtilityMethods;
 import com.loyality.jsw.serverrequesthandler.DispatchGetResponse;
 import com.loyality.jsw.serverrequesthandler.ErrorDto;
@@ -40,6 +40,8 @@ public class RetailerTranscationActivity extends AppCompatActivity implements Ge
     RecyclerView rlHistory;
     @BindView(R.id.tvNoDataFound)
     AppCompatTextView tvNoDataFound;
+    @BindView(R.id.tl_header)
+    TableLayout tlHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,12 +113,16 @@ public class RetailerTranscationActivity extends AppCompatActivity implements Ge
 
             tvNoDataFound.setVisibility(View.GONE);
             rlHistory.setVisibility(View.VISIBLE);
-        }
-        else{
+            tlHeader.setVisibility(View.VISIBLE);
+
+
+        } else {
 
             rlHistory.setAdapter(null);
             tvNoDataFound.setVisibility(View.VISIBLE);
             rlHistory.setVisibility(View.GONE);
+            tlHeader.setVisibility(View.GONE);
+
         }
 
     }
@@ -135,10 +141,10 @@ public class RetailerTranscationActivity extends AppCompatActivity implements Ge
     public void setAdapter(List<TranscationModel> eventModelList) {
 
 
-            RetailerTransAdapter myHistoryAdapter = new RetailerTransAdapter(RetailerTranscationActivity.this, eventModelList);
-            rlHistory.setLayoutManager(new LinearLayoutManager(this));
-            rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
-            rlHistory.setAdapter(myHistoryAdapter);
+        RetailerTransAdapter myHistoryAdapter = new RetailerTransAdapter(RetailerTranscationActivity.this, eventModelList);
+        rlHistory.setLayoutManager(new LinearLayoutManager(this));
+      //  rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
+        rlHistory.setAdapter(myHistoryAdapter);
 //JSWDB001 TT$777
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JSW Privilege</string>
+    <string name="app_name">JSW Steel Partner App</string>
     <string name="partner_program">PARTNER PROGRAM</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
@@ -58,14 +58,14 @@
     <string name="msg">Your details has been submitted successfully.\n  You will receive SMS and call upon registration</string>
     <string name="retailer_id">Retailer Id</string>
     <string name="tm_assinged_id">TM Assigned Id</string>
-    <string name="tm_name">TM Name</string>
+    <string name="tm_name">JSW Representative</string>
     <string name="tm_mobile">TM Mobile No.</string>
     <string name="units">Units -</string>
     <string name="total_price">Total Price</string>
     <string name="no_sheets">No. of Sheets</string>
     <string name="enter_sheet">Enter No. of Sheets</string>
     <string name="choose_district">Choose District</string>
-    <string name="name">Retailer Name</string>
+    <string name="name">Outlet Name</string>
     <string name="no_data_found">No Data Found</string>
     <string name="user_id">User Id</string>
     <string name="fabricator_nomination">Fabricator Nomination</string>

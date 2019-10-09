@@ -36,6 +36,28 @@ public class RetailerModel {
         this.district = district;
     }
 
+
+    @Override
+    public String toString() {
+        return retailerName ;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public String getCity() {
         return city;
     }
