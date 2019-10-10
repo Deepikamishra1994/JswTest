@@ -365,6 +365,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center"
+                    android:textStyle="italic"
                     android:text="@string/or"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />

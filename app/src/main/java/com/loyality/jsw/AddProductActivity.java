@@ -57,7 +57,7 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
 
     String state, city, district;
 
-    String productName, size, retailer, price, unit, sheets;
+    String productName, size, retailer, price, unit, sheets,productId;
     List<AddProductModel> addProductModelList = new ArrayList<>();
     @BindView(R.id.ivBack)
     AppCompatImageButton ivBack;
@@ -220,9 +220,10 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
             ProductModel productModel = (ProductModel) spProductName.getAdapter().getItem(position);
 
             productName = productModel.getProductName();
+            productId = productModel.getProductId();
 
 
-            getProductDetail(productModel.getProductName());
+            getProductDetail(productModel.getProductId());
 
         } else {
 
@@ -288,7 +289,7 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
 
 
         size = (String) spSizes.getAdapter().getItem(position);
-        getProductUnits(productName, size);
+        getProductUnits(productId, size);
 
     }
 
@@ -315,12 +316,23 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
         @Override
         public void onItemSelected (AdapterView < ? > parent, View view,int position, long id){
 
-        RetailerModel retailerModel = (RetailerModel) spRetailer.getAdapter().getItem(position);
-        tvRetrailer.setText("");
-        retailer="";
 
-        retailer = retailerModel.getRetailerId();
+        if(position>0){
 
+            RetailerModel retailerModel = (RetailerModel) spRetailer.getAdapter().getItem(position);
+
+            Log.e("testingRetailer",""+retailerModel.getRetailerId());
+            retailer = retailerModel.getRetailerId();
+            tvRetrailer.setText("");
+
+        }
+
+        else{
+
+            //tvRetrailer.setText("");
+            retailer="";
+
+        }
     }
 
         @Override
@@ -401,13 +413,25 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                    RetailerModel retailerModel = (RetailerModel) spRetailer.getAdapter().getItem(i);
-
+                    RetailerModel retailerModel = (RetailerModel) adapterView.getItemAtPosition(i);
                     retailer = retailerModel.getRetailerId();
-                    Toast.makeText(AddProductActivity.this,
-                            "Clicked item from auto completion list "
-                                    + retailer
-                            , Toast.LENGTH_SHORT).show();
+                    if(spRetailer.getAdapter()!=null){
+
+                        spRetailer.setSelection(0);
+
+                    }
+
+                //   tvRetrailer.setText(retailerModel.getRetailerName());
+
+/*
+                     if(spRetailer.getAdapter()!=null){
+
+                         spRetailer.setSelection(0);
+
+                     }
+*/
+
+
                 }
             };
     public void getDistrict(String id) {
@@ -490,6 +514,7 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
         addProductModel.setSize(size);
         addProductModel.setUnit(unit);
         addProductModel.setSheets(sheets);
+        addProductModel.setProductId(productId);
 
         addProductModelList.add(addProductModel);
 
@@ -599,7 +624,14 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
                 if (retailerModels != null && retailerModels.size() > 0) {
 
 
-                    setRetailerAdapter(retailerModels);
+                    List<RetailerModel> finalRetailerModel = new ArrayList<>();
+                    RetailerModel retailerModel = new RetailerModel();
+                    retailerModel.setiSalesCode("");
+                    retailerModel.setRetailerName("Select Retailer");
+                    finalRetailerModel.add(retailerModel);
+                    finalRetailerModel.addAll(retailerModels);
+
+                    setRetailerAdapter(finalRetailerModel);
                 } else {
 
                     retailer = "";

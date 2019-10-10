@@ -86,6 +86,7 @@ public class ActivitiesHistoryActivity extends AppCompatActivity implements GetD
 
             tvNoDataFound.setVisibility(View.VISIBLE);
             rlHistory.setVisibility(View.GONE);
+            rlHistory.setAdapter(null);
         }
 
     }

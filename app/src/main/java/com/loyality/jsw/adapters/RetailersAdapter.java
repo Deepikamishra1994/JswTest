@@ -47,7 +47,7 @@ public class RetailersAdapter extends BaseAdapter {
         LayoutInflater inflater = LayoutInflater.from(context);
         view = inflater.inflate(R.layout.custom_spinner, null);
         TextView textView = view.findViewById(R.id.tvName);
-        textView.setText(sortList.get(i).getRetailerId()+" "+sortList.get(i).getRetailerName());
+        textView.setText(sortList.get(i).getiSalesCode()+" "+sortList.get(i).getRetailerName());
         return view;
     }
 }

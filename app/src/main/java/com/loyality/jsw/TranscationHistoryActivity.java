@@ -141,7 +141,7 @@ public class TranscationHistoryActivity extends AppCompatActivity implements Get
 
             TransHistoryAdapter myHistoryAdapter = new TransHistoryAdapter(TranscationHistoryActivity.this, eventModelList);
             rlHistory.setLayoutManager(new LinearLayoutManager(this));
-            rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
+           // rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
             rlHistory.setAdapter(myHistoryAdapter);
 
         }

@@ -36,6 +36,12 @@ public class CustomRetailerListAdapter extends ArrayAdapter {
         itemLayout = resource;
     }
 
+
+    @Override
+    public RetailerModel getItem(int position) {
+        return dataList.get(position);
+    }
+
     @Override
     public int getCount() {
         return dataList.size();

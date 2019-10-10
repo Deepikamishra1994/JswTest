@@ -20,6 +20,16 @@ public class RetailerModel {
     private String retailerId;
    private String retailerName;
 
+    private String iSalesCode;
+
+    public String getiSalesCode() {
+        return iSalesCode;
+    }
+
+    public void setiSalesCode(String iSalesCode) {
+        this.iSalesCode = iSalesCode;
+    }
+
     public String getState() {
         return state;
     }
