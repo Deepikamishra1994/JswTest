@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -15,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.loyality.jsw.R;
 import com.loyality.jsw.RetailerTranscationActivity;
 import com.loyality.jsw.RetailerTranscationDetailActivity;
+import com.loyality.jsw.TransactionHistoryDetail;
 import com.loyality.jsw.TranscationHistoryActivity;
 import com.loyality.jsw.serverrequesthandler.models.TranscationModel;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class RetailerTransAdapter extends RecyclerView.Adapter<RetailerTransAdapter.MyViewHolder> {
@@ -34,7 +37,7 @@ public class RetailerTransAdapter extends RecyclerView.Adapter<RetailerTransAdap
     @Override
     public RetailerTransAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-       View view= LayoutInflater.from(transcationHistoryActivity).inflate(R.layout.custom_retailer_transcation,null);
+       View view= LayoutInflater.from(transcationHistoryActivity).inflate(R.layout.custom_transcation,null);
 
         return new MyViewHolder(view);
     }
@@ -42,43 +45,48 @@ public class RetailerTransAdapter extends RecyclerView.Adapter<RetailerTransAdap
     @Override
     public void onBindViewHolder(@NonNull RetailerTransAdapter.MyViewHolder holder, int position) {
 
-       TranscationModel transcationModel = transcationModels.get(position);
-
-
-        Log.e("TestingTransc",""+transcationModel.getStatus());
-       holder.tvTranscation.setText(transcationModel.getTransactionId());
-       holder.tvSize.setText(transcationModel.getSize());
-
-
-           holder.tvStatus.setText(transcationModel.getStatus());
 
 
 
-       holder.tvFabricator.setText(transcationModel.getFabricator());
-       holder.tvAmount.setText(transcationModel.getAmount());
-       holder.tvProduct.setText(transcationModel.getProductName());
-       holder.tvQuantity.setText(transcationModel.getQuantity());
-       holder.tvUnit.setText(transcationModel.getUnit());
-       holder.tvDate.setText(transcationModel.getDate());
 
-       if(TextUtils.isEmpty(transcationModel.getSheets())){
 
-           holder.llSheets.setVisibility(View.GONE);
-       }
-       else{
+        TranscationModel transcationModel = transcationModels.get(position);
+        holder.tvFabricator.setText(transcationModel.getFabricator());
+        holder.tvStatus.setText(transcationModel.getStatus());
 
-           holder.llSheets.setVisibility(View.VISIBLE);
-           holder.tvSheets.setText(transcationModel.getSheets());
 
-       }
-       holder.llRoot.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+        if(!TextUtils.isEmpty(transcationModel.getStatus())) {
 
-               transcationHistoryActivity.startActivity(new Intent(transcationHistoryActivity, RetailerTranscationDetailActivity.class).putExtra("transactionId",transcationModel.getTransactionId()).putExtra("status",transcationModel.getStatus()));
+            switch (transcationModel.getStatus()) {
 
-           }
-       });
+                case "PENDING":
+
+                    holder.tvStatus.setTextColor(transcationHistoryActivity.getResources().getColor(R.color.colorOrange));
+
+                    break;
+
+                case "APPROVED":
+
+                    holder.tvStatus.setTextColor(transcationHistoryActivity.getResources().getColor(R.color.colorGreen));
+
+                    break;
+                case "REJECTED":
+
+                    holder.tvStatus.setTextColor(transcationHistoryActivity.getResources().getColor(R.color.colorRed));
+
+                    break;
+            }
+
+        }
+
+        holder.iv_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                transcationHistoryActivity.startActivity(new Intent(transcationHistoryActivity, RetailerTranscationDetailActivity.class).putExtra("transactionId",transcationModel.getTransactionId()).putExtra("status",transcationModel.getStatus()));
+
+            }
+        });
 
     }
 
@@ -93,20 +101,12 @@ public class RetailerTransAdapter extends RecyclerView.Adapter<RetailerTransAdap
 
 
 
-        AppCompatTextView tvTranscation;
-
-        AppCompatTextView tvProduct;
-
-        AppCompatTextView tvQuantity;
-
-        AppCompatTextView tvUnit;
-        AppCompatTextView tvSize;
-
-        AppCompatTextView tvAmount;
         AppCompatTextView tvFabricator;
         AppCompatTextView tvStatus;
-        AppCompatTextView  tvDate;
-        AppCompatTextView tvSheets;
+        //        AppCompatTextView  tvDate;
+        ImageView iv_view;
+//
+
         LinearLayout llSheets;
         LinearLayout llRoot;
 
@@ -114,18 +114,20 @@ public class RetailerTransAdapter extends RecyclerView.Adapter<RetailerTransAdap
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvTranscation = itemView.findViewById(R.id.tvTranscationId);
-            tvProduct = itemView.findViewById(R.id.tvProduct);
-            tvSize = itemView.findViewById(R.id.tvSize);
-            tvQuantity = itemView.findViewById(R.id.tvQunatity);
-            tvUnit = itemView.findViewById(R.id.tvUnit);
-            tvAmount = itemView.findViewById(R.id.tvAmount);
-            tvFabricator = itemView.findViewById(R.id.tvFabricator);
+
+            // tvTranscation = itemView.findViewById(R.id.tvTranscationId);
+//            tvProduct = itemView.findViewById(R.id.tvProduct);
+//            tvSize = itemView.findViewById(R.id.tvSize);
+//            tvQuantity = itemView.findViewById(R.id.tvQunatity);
+//            tvUnit = itemView.findViewById(R.id.tvUnit);
+//            tvAmount = itemView.findViewById(R.id.tvAmount);
+            tvFabricator = itemView.findViewById(R.id.tvRetailer);
             tvStatus = itemView.findViewById(R.id.tvStatus);
-            tvDate = itemView.findViewById(R.id.tvDate);
-            tvSheets = itemView.findViewById(R.id.tvSheets);
-            llSheets = itemView.findViewById(R.id.llSheets);
-            llRoot = itemView.findViewById(R.id.llRoot);
+//            tvDate = itemView.findViewById(R.id.tvDate);
+            iv_view = itemView.findViewById(R.id.iv_view);
+//            llSheets = itemView.findViewById(R.id.llSheets);
+//            llRoot = itemView.findViewById(R.id.llRoot);
+
 
 
         }

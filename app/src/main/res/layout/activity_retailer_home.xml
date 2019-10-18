@@ -145,104 +145,6 @@
                     android:orientation="vertical"
                     >
 
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:id="@+id/llFabricatorNomination"
-                            android:layout_height="match_parent">
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="80dp"
-                                android:src="@drawable/trophy"
-                                android:padding="16dp"
-                                android:background="@drawable/light_blue_rectangle"
-                                android:layout_height="80dp" />
-
-
-
-                            <View
-                                android:layout_width="100dp"
-                                android:layout_marginTop="15dp"
-                                android:background="@android:color/black"
-                                android:layout_height="1dp"/>
-
-
-
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:text="@string/fabricator_nomination"
-                                android:id="@+id/tvFarbricator"
-                                android:layout_marginTop="10dp"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:textColor="@android:color/black"
-                                android:layout_height="wrap_content" />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:id="@+id/llSales"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:layout_height="match_parent">
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:layout_width="80dp"
-                                android:src="@drawable/clipboard"
-                                android:padding="16dp"
-
-                                android:background="@drawable/light_blue_rectangle"
-                                android:layout_height="80dp" />
-
-
-
-                            <View
-                                android:layout_width="100dp"
-                                android:layout_marginTop="15dp"
-                                android:background="@android:color/black"
-                                android:layout_height="1dp"/>
-
-
-
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
-                                android:text="@string/sales_ver"
-                                android:id="@+id/tvTranscationHistory"
-                                android:layout_marginTop="10dp"
-                                android:textStyle="bold"
-
-                                android:textSize="15sp"
-                                android:textColor="@android:color/black"
-                                android:layout_height="wrap_content" />
-
-
-                        </LinearLayout>
-
-
-
-
-
-
-
-                    </LinearLayout>
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
@@ -285,6 +187,107 @@
                                 android:textSize="15sp"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"
+                                android:textColor="@android:color/black"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:id="@+id/llFabricatorNomination"
+                            android:layout_height="match_parent">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="80dp"
+                                android:src="@drawable/trophy"
+                                android:padding="16dp"
+                                android:background="@drawable/light_blue_rectangle"
+                                android:layout_height="80dp" />
+
+
+
+                            <View
+                                android:layout_width="100dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@android:color/black"
+                                android:layout_height="1dp"/>
+
+
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:text="@string/fabricator_nomination"
+                                android:id="@+id/tvFarbricator"
+                                android:layout_marginTop="10dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/black"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+
+
+
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:id="@+id/llSales"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_height="match_parent">
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="80dp"
+                                android:src="@drawable/clipboard"
+                                android:padding="16dp"
+
+                                android:background="@drawable/light_blue_rectangle"
+                                android:layout_height="80dp" />
+
+
+
+                            <View
+                                android:layout_width="100dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@android:color/black"
+                                android:layout_height="1dp"/>
+
+
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:text="@string/sales_ver"
+                                android:id="@+id/tvTranscationHistory"
+                                android:layout_marginTop="10dp"
+                                android:textStyle="bold"
+
+                                android:textSize="15sp"
                                 android:textColor="@android:color/black"
                                 android:layout_height="wrap_content" />
 

@@ -257,7 +257,7 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
 
         if (!TextUtils.isEmpty(unit)) {
 
-            if (unit.equalsIgnoreCase("r.f") || unit.equalsIgnoreCase("r.m")) {
+            if (unit.equalsIgnoreCase("Running Ft") || unit.equalsIgnoreCase("Running meter")) {
 
                 etSheets.setVisibility(View.VISIBLE);
                 tvSheetTitle.setVisibility(View.VISIBLE);
@@ -385,7 +385,7 @@ public class AddProductActivity extends AppCompatActivity implements GetDispatch
             district = districtModel.getDistrict();
             getAllRetailers(district);
         } else {
-            retailer = "";
+           // retailer = "";
             spRetailer.setAdapter(null);
 
         }

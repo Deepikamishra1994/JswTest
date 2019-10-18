@@ -67,6 +67,54 @@ public class AddProductModel {
     private String productId;
     private String transactionId;
     private String remarks;
+    private String fabricatorId;
+    private String fabricatorName;
+    private String purchaseDtae;
+    private String fabricatorNumber;
+    private String fabricator;
+    private String remark;
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    private String product;
+
+    public String getFabricatorName() {
+        return fabricatorName;
+    }
+
+    public void setFabricatorName(String fabricatorName) {
+        this.fabricatorName = fabricatorName;
+    }
+
+    public String getPurchaseDtae() {
+        return purchaseDtae;
+    }
+
+    public void setPurchaseDtae(String purchaseDtae) {
+        this.purchaseDtae = purchaseDtae;
+    }
+
+    public String getFabricatorNumber() {
+        return fabricatorNumber;
+    }
+
+    public void setFabricatorNumber(String fabricatorNumber) {
+        this.fabricatorNumber = fabricatorNumber;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
     public String getRemarks() {
         return remarks;
@@ -103,4 +151,19 @@ public class AddProductModel {
     private String sheets;
 
 
+    public String getFabricator() {
+        return fabricator;
+    }
+
+    public void setFabricator(String fabricator) {
+        this.fabricator = fabricator;
+    }
+
+    public String getFabricatorId() {
+        return fabricatorId;
+    }
+
+    public void setFabricatorId(String fabricatorId) {
+        this.fabricatorId = fabricatorId;
+    }
 }

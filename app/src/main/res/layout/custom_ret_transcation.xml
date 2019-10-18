@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite"
+    android:layout_height="wrap_content"
+    tools:context=".TranscationHistoryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Retailer Name"
+        android:layout_width="@dimen/_150sdp"
+        android:id="@+id/tvRetailer"
+       />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/product_name"
+            android:layout_width="@dimen/_150sdp"
+            android:id="@+id/tvProduct"
+            />
+    <TextView
+        android:layout_height="match_parent"
+        android:text="Status"
+        android:gravity="center"
+        android:layout_width="@dimen/_90sdp"
+        android:id="@+id/tvStatus"
+       >
+    </TextView>
+    <ImageView
+        android:id="@+id/iv_view"
+        android:layout_height="match_parent"
+        android:text="Action"
+        android:gravity="center"
+        android:src="@drawable/right_arrow"
+        android:layout_width="@dimen/_80sdp"
+       >
+    </ImageView>
+
+
+<!--
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+              android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/date_sample"
+            android:id="@+id/tvRetailer"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_column="0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:text="@string/status"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="Action"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_weight="1">
+        </androidx.appcompat.widget.AppCompatTextView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+-->
+
+
+
+
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorDarkGrey"
+        />
+
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

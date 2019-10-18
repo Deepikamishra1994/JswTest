@@ -3,6 +3,7 @@ package com.loyality.jsw.serverrequesthandler;
 
 import com.loyality.jsw.serverrequesthandler.models.AddProductModel;
 import com.loyality.jsw.serverrequesthandler.models.EnquiryModel;
+import com.loyality.jsw.serverrequesthandler.models.FabricatorPurchase;
 import com.loyality.jsw.serverrequesthandler.models.LoginModel;
 import com.loyality.jsw.serverrequesthandler.models.LoginResponseModel;
 import com.loyality.jsw.serverrequesthandler.models.RegisterModel;
@@ -63,6 +64,22 @@ public interface PostRequests {
 
     @POST("addRetailer")
     public Observable<Response<ResponseModel>> addRetailer(@Header("Authorization") String authorize,@Header("token") String token , @Body RetailerModel retailerModel);
+    @POST("addRetailer")
+    public Observable<Response<ResponseModel>> addTmProfile(@Header("Authorization") String authorize,@Header("token") String token , @Body RegisterModel retailerModel);
+
+
+
+    @POST("TM/fabricatorApproval")
+    public Observable<Response<ResponseModel>> approveFabricator(@Header("Authorization") String authorize,@Header("token") String token , @Body RegisterModel registerModel);
+
+
+
+
+    @POST("TM/transactionApproval")
+    public Observable<Response<FabricatorPurchase>> fabricatorPurchaseVerify(@Header("Authorization") String authorize, @Header("token") String token , @Body AddProductModel registerModel, @Query("status") String status);
+    @POST("TM/queryResult ")
+    public Observable<Response<EnquiryModel>> queryResult(@Header("Authorization") String authorize, @Header("token") String token , @Body EnquiryModel registerModel);
+
 
 
     @POST("forgotPassword")

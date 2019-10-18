@@ -3,15 +3,17 @@ package com.loyality.jsw;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.loyality.jsw.adapters.EqualSpacingItemDecoration;
 import com.loyality.jsw.adapters.SizeUnitsAdapter;
 import com.loyality.jsw.adapters.TransHistoryAdapter;
 import com.loyality.jsw.common.UtilityMethods;
@@ -39,6 +41,18 @@ public class TranscationHistoryActivity extends AppCompatActivity implements Get
     RecyclerView rlHistory;
     @BindView(R.id.tvNoDataFound)
     AppCompatTextView tvNoDataFound;
+    @BindView(R.id.tv_totalPurchase)
+    AppCompatTextView tvTotalPurchase;
+    @BindView(R.id.tv_totalApprove)
+    AppCompatTextView tvTotalApprove;
+    @BindView(R.id.tv_totalPending)
+    AppCompatTextView tvTotalPending;
+    @BindView(R.id.ll_summary)
+    LinearLayout llSummary;
+    @BindView(R.id.tl_header)
+    TableLayout tlHeader;
+    @BindView(R.id.cardView)
+    CardView cardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,14 +118,16 @@ public class TranscationHistoryActivity extends AppCompatActivity implements Get
         List<TranscationModel> eventModelList = (List<TranscationModel>) body;
 
         if (eventModelList != null && eventModelList.size() > 0) {
-
+            cardView.setVisibility(View.VISIBLE);
+            tvTotalApprove.setText(eventModelList.get(0).getTotalApprove());
+            tvTotalPending.setText(eventModelList.get(0).getTotalPending());
+            tvTotalPurchase.setText(eventModelList.get(0).getTotalPurchase());
             setAdapter(eventModelList);
-
+            rlHistory.setVisibility(View.VISIBLE);
 
             tvNoDataFound.setVisibility(View.GONE);
-            rlHistory.setVisibility(View.VISIBLE);
-        }
-        else{
+            tlHeader.setVisibility(View.VISIBLE);
+        } else {
 
             rlHistory.setAdapter(null);
             tvNoDataFound.setVisibility(View.VISIBLE);
@@ -133,18 +149,12 @@ public class TranscationHistoryActivity extends AppCompatActivity implements Get
 
     public void setAdapter(List<TranscationModel> eventModelList) {
 
-        if(rlHistory.getAdapter()!=null){
-
-            rlHistory.getAdapter().notifyDataSetChanged();
-
-        }else{
 
             TransHistoryAdapter myHistoryAdapter = new TransHistoryAdapter(TranscationHistoryActivity.this, eventModelList);
             rlHistory.setLayoutManager(new LinearLayoutManager(this));
-           // rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
+            // rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
             rlHistory.setAdapter(myHistoryAdapter);
 
-        }
 
     }
 }

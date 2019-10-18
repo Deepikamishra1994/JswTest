@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.loyality.jsw.activity.TMHomeActivity;
 import com.loyality.jsw.adapters.CommonAdapter;
 import com.loyality.jsw.common.Prefrences;
 import com.loyality.jsw.common.UtilityMethods;
@@ -59,6 +60,7 @@ public class LoginActivity extends AppCompatActivity implements PostDispatchs, G
         bloodlist.add("Fabricator");
         bloodlist.add("Retailer");
         bloodlist.add("Distributor");
+        bloodlist.add("TM");
 
 
         setPartnerTypeAdapter(bloodlist);
@@ -180,9 +182,9 @@ public class LoginActivity extends AppCompatActivity implements PostDispatchs, G
                 /*
                 Need to change the user type
                */
-               // Prefrences.getInstance().storeUserData(LoginActivity.this, "", loginResponseModel.getUserType(), loginResponseModel.getToken());
+                Prefrences.getInstance().storeUserData(LoginActivity.this, "", loginResponseModel.getUserType(), loginResponseModel.getToken());
 
-                Prefrences.getInstance().storeUserData(LoginActivity.this, "","FABRICATOR", loginResponseModel.getToken());
+               // Prefrences.getInstance().storeUserData(LoginActivity.this, "","FABRICATOR", loginResponseModel.getToken());
 
 
                 getProfile();
@@ -213,6 +215,14 @@ public class LoginActivity extends AppCompatActivity implements PostDispatchs, G
 
                 } else if (Prefrences.getInstance().getPartnerType(LoginActivity.this).equalsIgnoreCase("DISTRIBUTOR")) {
                     startActivity(new Intent(LoginActivity.this, DistributorHomeActivity.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    finish();
+
+
+                }
+
+                else if (Prefrences.getInstance().getPartnerType(LoginActivity.this).equalsIgnoreCase("TM")) {
+                    startActivity(new Intent(LoginActivity.this, TMHomeActivity.class));
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
 

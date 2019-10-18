@@ -2,9 +2,12 @@ package com.loyality.jsw.serverrequesthandler;
 
 
 import com.loyality.jsw.serverrequesthandler.models.AddProductModel;
+import com.loyality.jsw.serverrequesthandler.models.ApproveFabricator;
 import com.loyality.jsw.serverrequesthandler.models.CityModel;
 import com.loyality.jsw.serverrequesthandler.models.DistrictModel;
+import com.loyality.jsw.serverrequesthandler.models.EnquiryModel;
 import com.loyality.jsw.serverrequesthandler.models.EventModel;
+import com.loyality.jsw.serverrequesthandler.models.FabricatorPurchase;
 import com.loyality.jsw.serverrequesthandler.models.ProductModel;
 import com.loyality.jsw.serverrequesthandler.models.RegisterModel;
 import com.loyality.jsw.serverrequesthandler.models.RetailerModel;
@@ -29,12 +32,19 @@ public interface GetRequests {
     @GET("profile")
     public Observable<Response<RegisterModel>> getProfile(@Header("Authorization") String auth, @Header("token") String token);
 
+
+    @GET("profile")
+    public Observable<Response<RegisterModel>> getProfileById(@Header("Authorization") String auth, @Header("token") String token);
+
+
     @GET("events")
     public Observable<Response<List<EventModel>>> getEvents(@Header("Authorization") String auth, @Header("token") String token);
 
 
     @GET("eventDetail")
     public Observable<Response<EventModel>> getEventDetail(@Header("Authorization") String auth, @Header("token") String token,@Query("eventId")String eventID);
+    @GET("TM/transactionsUnderRetailer")
+    public Observable<Response<List<TranscationModel>>> getFabricatorPurchase(@Header("Authorization") String auth, @Header("token") String token, @Query("retailer_id")String RetailerID, @Query("sort")String sort);
 
     @GET("transactions")
     public Observable<Response<List<TranscationModel>>> getTransactions(@Header("Authorization") String auth, @Header("token") String token,@Query("sort")String sort);
@@ -60,11 +70,19 @@ public interface GetRequests {
 
     @GET("productUnits")
     public Observable<Response<List<String>>> getProductUnits(@Header("Authorization") String auth, @Header("token") String token, @Query("id")String id,@Query("size")String size);
+    @GET("TM/queries")
+    public Observable<Response<List<EnquiryModel>>> getSalesQueries(@Header("Authorization") String auth, @Header("token") String token, @Query("sort")String sort);
+
 
 
     @GET("retailers")
     public Observable<Response<List<RetailerModel>>> getRetailers(@Header("Authorization") String auth, @Header("token") String token,@Query("district")String district);
 
+    @GET("TM/fabricatorUnderRetailer")
+    public Observable<Response<List<FabricatorPurchase>>> getAllFabricator(@Header("Authorization") String auth, @Header("token") String token,@Query("retailer_id")String retailer_id);
+
+    @GET("TM/fabricatorProfile")
+    public Observable<Response<FabricatorPurchase>> getFabricatorProfile(@Header("Authorization") String auth, @Header("token") String token,@Query("fabricator_id")String fabricator_id,@Query("retailer_id")String retailer_id);
 
     @GET("states")
     public Observable<Response<List<StateModel>>> getStates(@Header("Authorization") String auth, @Header("token") String token);
@@ -77,6 +95,8 @@ public interface GetRequests {
     @GET("district")
     public Observable<Response<List<DistrictModel>>> getDistrict(@Header("Authorization") String auth, @Header("token") String token, @Query("name")String id);
 
+    @GET("TM/fabricators")
+    public Observable<Response<List<ApproveFabricator>>> getApproveFabricator(@Header("Authorization") String auth, @Header("token") String token, @Query("sort")String sort);
 
 
 }

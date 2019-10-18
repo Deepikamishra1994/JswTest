@@ -464,7 +464,7 @@ public class EditProfileActivity extends AppCompatActivity implements GetDispatc
 
                 break;
 
-            case REGISTER:
+            case EDIT_PROFILE:
 
                 UtilityMethods.showToast(EditProfileActivity.this, "Profile Updated Successfully");
                 onBackPressed();

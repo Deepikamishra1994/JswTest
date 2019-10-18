@@ -74,7 +74,6 @@ public class TransactionHistoryDetail extends AppCompatActivity {
         tvSize.setText(transcationModel.getSize());
         tvUnit.setText(transcationModel.getUnit());
         tvSheets.setText(transcationModel.getSheets());
-        tvStatus.setText(transcationModel.getStatus());
         tvRetailer.setText(transcationModel.getRetailer());
 
         if (!TextUtils.isEmpty(transcationModel.getStatus())) {
@@ -87,9 +86,11 @@ public class TransactionHistoryDetail extends AppCompatActivity {
 
                     break;
 
-                case "APRROVED":
+                case "APPROVED":
 
                     tvStatus.setTextColor(getResources().getColor(R.color.colorGreen));
+                    tvStatus.setText(transcationModel.getStatus());
+
 
                     break;
                 case "REJECTED":
@@ -97,8 +98,9 @@ public class TransactionHistoryDetail extends AppCompatActivity {
                     tvStatus.setTextColor(getResources().getColor(R.color.colorRed));
 
                     break;
-            }
+              }
         }
+        tvStatus.setText(transcationModel.getStatus());
         if (TextUtils.isEmpty(transcationModel.getSheets())) {
 
             llSheets.setVisibility(View.GONE);

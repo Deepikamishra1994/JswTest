@@ -9,6 +9,10 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -33,7 +37,7 @@ public class ApplicationConstants {
 
   //  public static final String baseApi = "http://40.122.40.10/jsw_demo/";
     public static final String baseApi = "http://40.122.40.10/jsw_demo/";
- // public static final String baseApi = "http://52.158.208.73/jsw_loyalty/";
+  //public static final String baseApi = "http://52.158.208.73/jsw_loyalty/";
 
 
     public static final String imageBaseUrl="http://40.122.40.10/jsw_demo/";
@@ -245,4 +249,13 @@ public class ApplicationConstants {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+    public  static void openSoftKeyboard(AutoCompleteTextView editText, Activity activity){
+    InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+
+    }
+     public static void showToast(Activity activity,String message){
+         Toast.makeText(activity,message,Toast.LENGTH_SHORT).show();
+
+     }
 }

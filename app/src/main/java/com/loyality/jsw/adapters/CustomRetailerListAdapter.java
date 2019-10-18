@@ -1,6 +1,6 @@
 package com.loyality.jsw.adapters;
 
-import android.content.Context;
+import android.app.Activity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.loyality.jsw.R;
+import com.loyality.jsw.activity.SearchPartnerActivity;
 import com.loyality.jsw.serverrequesthandler.models.RetailerModel;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.List;
 public class CustomRetailerListAdapter extends ArrayAdapter {
 
     private List<RetailerModel> dataList;
-    private Context mContext;
+    public Activity mContext;
     private int itemLayout;
 
     private ListFilter listFilter = new ListFilter();
@@ -29,8 +30,9 @@ public class CustomRetailerListAdapter extends ArrayAdapter {
 
 
 
-    public CustomRetailerListAdapter(Context context, int resource, List<RetailerModel> storeDataLst) {
+    public CustomRetailerListAdapter(Activity context, int resource, List<RetailerModel> storeDataLst) {
         super(context, resource, storeDataLst);
+
         dataList = storeDataLst;
         mContext = context;
         itemLayout = resource;
@@ -39,6 +41,8 @@ public class CustomRetailerListAdapter extends ArrayAdapter {
 
     @Override
     public RetailerModel getItem(int position) {
+
+
         return dataList.get(position);
     }
 
@@ -59,7 +63,18 @@ public class CustomRetailerListAdapter extends ArrayAdapter {
 
         TextView strName = (TextView) view.findViewById(R.id.tv_retrailerName);
         strName.setText(dataList.get(position).getRetailerName());
+
+        Log.e("testingRetailer",""+dataList.get(position)+" "+dataList.get(position).getRetailerId()+" "+dataList.get(position).getRetailerName());
+
+
+
         return view;
+    }
+
+    public RetailerModel getDataItem(int postion){
+
+        Log.e("size",""+dataList.size());
+        return dataList.get(postion);
     }
 
     @NonNull
@@ -107,6 +122,7 @@ public class CustomRetailerListAdapter extends ArrayAdapter {
         protected void publishResults(CharSequence constraint, FilterResults results) {
             if (results.values != null) {
                 dataList = (ArrayList<RetailerModel>)results.values;
+                ((SearchPartnerActivity) mContext).getRetailerData(dataList);
             } else {
                 dataList = null;
             }

@@ -62,7 +62,7 @@ public class RetailerHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retailer_home);
         ButterKnife.bind(this);
-        llEnquiry.setVisibility(View.GONE);
+        llEnquiry.setVisibility(View.VISIBLE);
         tvUserName.setText(Prefrences.getInstance().getPartnerName(RetailerHomeActivity.this));
         tvUserMobile.setText(Prefrences.getInstance().getPartnerMobile(RetailerHomeActivity.this));
         ivBack.setOnClickListener(new View.OnClickListener() {

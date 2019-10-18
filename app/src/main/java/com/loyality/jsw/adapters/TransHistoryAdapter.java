@@ -20,11 +20,12 @@ import com.loyality.jsw.TranscationHistoryActivity;
 import com.loyality.jsw.serverrequesthandler.models.TranscationModel;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapter.MyViewHolder> {
    private TranscationHistoryActivity transcationHistoryActivity;
-  private List<TranscationModel> transcationModels;
+  private List<TranscationModel> transcationModels=new ArrayList<>();
 
     public TransHistoryAdapter(TranscationHistoryActivity transcationHistoryActivity, List<TranscationModel> eventModelList) {
 
@@ -36,7 +37,7 @@ public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapte
     @Override
     public TransHistoryAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-       View view= LayoutInflater.from(transcationHistoryActivity).inflate(R.layout.custom_transcation,null);
+       View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_transcation,parent,false);
 
         return new MyViewHolder(view);
     }
@@ -45,16 +46,11 @@ public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapte
     public void onBindViewHolder(@NonNull TransHistoryAdapter.MyViewHolder holder, int position) {
 
        TranscationModel transcationModel = transcationModels.get(position);
-    // holder.tvTranscation.setText(transcationModel.getTransactionId());
-//       holder.tvSize.setText(transcationModel.getSize());
        holder.tvRetailer.setText(transcationModel.getRetailer());
-//       holder.tvAmount.setText(transcationModel.getAmount());
-//       holder.tvProduct.setText(transcationModel.getProduct());
-//       holder.tvQuantity.setText(transcationModel.getQuantity());
-//       holder.tvUnit.setText(transcationModel.getUnit());
-//       holder.tvDate.setText(transcationModel.getDate());
         holder.tvStatus.setText(transcationModel.getStatus());
-           if(!TextUtils.isEmpty(transcationModel.getStatus())) {
+
+
+        if(!TextUtils.isEmpty(transcationModel.getStatus())) {
 
                switch (transcationModel.getStatus()) {
 
@@ -64,7 +60,7 @@ public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapte
 
                        break;
 
-                   case "APRROVED":
+                   case "APPROVED":
 
                        holder.tvStatus.setTextColor(transcationHistoryActivity.getResources().getColor(R.color.colorGreen));
 
@@ -75,6 +71,7 @@ public class TransHistoryAdapter extends RecyclerView.Adapter<TransHistoryAdapte
 
                        break;
                }
+
            }
 
            holder.iv_view.setOnClickListener(new View.OnClickListener() {

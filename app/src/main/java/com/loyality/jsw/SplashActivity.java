@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.loyality.jsw.activity.TMHomeActivity;
 import com.loyality.jsw.common.Prefrences;
 import com.loyality.jsw.common.UtilityMethods;
 
@@ -58,6 +59,14 @@ public class SplashActivity extends AppCompatActivity {
                       }
                       else if(Prefrences.getInstance().getPartnerType(SplashActivity.this).equalsIgnoreCase("DISTRIBUTOR")){
                           startActivity(new Intent(SplashActivity.this, DistributorHomeActivity.class));
+                          overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                          finish();
+
+
+
+                      }
+                      else if(Prefrences.getInstance().getPartnerType(SplashActivity.this).equalsIgnoreCase("TM")){
+                          startActivity(new Intent(SplashActivity.this, TMHomeActivity.class));
                           overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                           finish();
 

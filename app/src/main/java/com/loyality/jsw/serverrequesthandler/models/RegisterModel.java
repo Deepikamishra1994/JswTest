@@ -119,6 +119,53 @@ public class RegisterModel {
     private String pincode;
     private String monthlyVolume;
     private String id;
+    private String assignedArea;
+    private String assignedManagerId;
+    private String assignedManagerName;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private String status;
+
+    public String getPartnerCode() {
+        return partnerCode;
+    }
+
+    public void setPartnerCode(String partnerCode) {
+        this.partnerCode = partnerCode;
+    }
+
+    private String partnerCode;
+
+    public String getAssignedArea() {
+        return assignedArea;
+    }
+
+    public void setAssignedArea(String assignedArea) {
+        this.assignedArea = assignedArea;
+    }
+
+    public String getAssignedManagerId() {
+        return assignedManagerId;
+    }
+
+    public void setAssignedManagerId(String assignedManagerId) {
+        this.assignedManagerId = assignedManagerId;
+    }
+
+    public String getAssignedManagerName() {
+        return assignedManagerName;
+    }
+
+    public void setAssignedManagerName(String assignedManagerName) {
+        this.assignedManagerName = assignedManagerName;
+    }
 
     public String getOutletName() {
         return outletName;
@@ -135,6 +182,16 @@ public class RegisterModel {
     private String tmAssignedId;
     private String tmAssignedName;
     private String tmAssignedMobileNo;
+
+    public String getTmAssignedArea() {
+        return tmAssignedArea;
+    }
+
+    public void setTmAssignedArea(String tmAssignedArea) {
+        this.tmAssignedArea = tmAssignedArea;
+    }
+
+    private String tmAssignedArea;
 
 
     public String getTmAssignedName() {

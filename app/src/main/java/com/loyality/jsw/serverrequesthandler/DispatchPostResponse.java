@@ -4,11 +4,13 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.loyality.jsw.Constants.ApplicationConstants;
 import com.loyality.jsw.common.Prefrences;
 import com.loyality.jsw.common.UtilityMethods;
 import com.loyality.jsw.serverrequesthandler.models.AddProductModel;
 import com.loyality.jsw.serverrequesthandler.models.EnquiryModel;
+import com.loyality.jsw.serverrequesthandler.models.FabricatorPurchase;
 import com.loyality.jsw.serverrequesthandler.models.LoginModel;
 import com.loyality.jsw.serverrequesthandler.models.LoginResponseModel;
 import com.loyality.jsw.serverrequesthandler.models.RegisterModel;
@@ -125,6 +127,148 @@ public class DispatchPostResponse {
                 });
 
                 break;
+            case SUBMITTM_PROFILE:
+                postRequests.addTmProfile(ApplicationConstants.auth_token,Prefrences.getInstance().getToken(context),(RegisterModel) object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<ResponseModel>>() {
+
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+                            submitNotify(context,type+" "+e.getCause()+" "+e.getMessage());
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<ResponseModel> listResponse) {
+
+                        new PostRequestCallback<>(postDispatchs, listResponse, ResponseTypes.ADD_RETAILER, context).onResponse();
+
+                    }
+                });
+
+                break;
+
+
+            case APPROVE_FABRICATOR:
+                Gson gson = new Gson();
+                String data = gson.toJson(object);
+                Log.e("data",data);
+                postRequests.approveFabricator(ApplicationConstants.auth_token,Prefrences.getInstance().getToken(context),(RegisterModel) object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<ResponseModel>>() {
+
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+                            submitNotify(context,type+" "+e.getCause()+" "+e.getMessage());
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<ResponseModel> listResponse) {
+
+                        new PostRequestCallback<>(postDispatchs, listResponse, ResponseTypes.APPROVE_FABRICATOR, context).onResponse();
+
+                    }
+                });
+
+                break;
+            case QUERYRESULT:
+
+                postRequests.queryResult(ApplicationConstants.auth_token,Prefrences.getInstance().getToken(context),(EnquiryModel) object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<EnquiryModel>>() {
+
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+                            submitNotify(context,type+" "+e.getCause()+" "+e.getMessage());
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<EnquiryModel> listResponse) {
+
+                        new PostRequestCallback<>(postDispatchs, listResponse, ResponseTypes.QUERYRESULT, context).onResponse();
+
+                    }
+                });
+
+                break;
+            case UPDATE_PURCHASE_VERIFICATION:
+                postRequests.fabricatorPurchaseVerify(ApplicationConstants.auth_token,Prefrences.getInstance().getToken(context),(AddProductModel) object,String.valueOf(o)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<FabricatorPurchase>>() {
+
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+                            submitNotify(context,type+" "+e.getCause()+" "+e.getMessage());
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<FabricatorPurchase> listResponse) {
+
+                        new PostRequestCallback<>(postDispatchs, listResponse, ResponseTypes.UPDATE_PURCHASE_VERIFICATION, context).onResponse();
+
+                    }
+                });
+
+                break;
+
+
             case FORGOT_PASSWORD:
                 postRequests.forgotPassword(ApplicationConstants.auth_token,String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<ResponseModel>>() {
 
@@ -234,7 +378,9 @@ public class DispatchPostResponse {
                 break;
             case EDIT_PROFILE:
 
-
+                Gson gson1 = new Gson();
+                String data1 = gson1.toJson(object);
+                Log.e("data",data1);
                 postRequests.editProfile(ApplicationConstants.auth_token,Prefrences.getInstance().getToken(context),(RegisterModel) object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<ResponseModel>>() {
 
                     @Override

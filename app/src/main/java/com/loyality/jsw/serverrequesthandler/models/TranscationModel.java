@@ -3,7 +3,9 @@ package com.loyality.jsw.serverrequesthandler.models;
 import java.io.Serializable;
 
 public class TranscationModel implements Serializable {
-
+    private String totalPending;
+    private String totalPurchase;
+    private String totalApprove;
     private String transactionId;
     private String product;
     private String size;
@@ -15,6 +17,76 @@ public class TranscationModel implements Serializable {
     private String date;
     private String sheets;
     private String fabricator;
+
+    private String fabricatorID;
+    private String fabricatorName;
+    private String purchaseDtae;
+    private String fabricatorNumber;
+    private String remark;
+
+    public String getFabricatorID() {
+        return fabricatorID;
+    }
+
+    public void setFabricatorID(String fabricatorID) {
+        this.fabricatorID = fabricatorID;
+    }
+
+    public String getFabricatorName() {
+        return fabricatorName;
+    }
+
+    public void setFabricatorName(String fabricatorName) {
+        this.fabricatorName = fabricatorName;
+    }
+
+    public String getPurchaseDtae() {
+        return purchaseDtae;
+    }
+
+    public void setPurchaseDtae(String purchaseDtae) {
+        this.purchaseDtae = purchaseDtae;
+    }
+
+    public String getFabricatorNumber() {
+        return fabricatorNumber;
+    }
+
+    public void setFabricatorNumber(String fabricatorNumber) {
+        this.fabricatorNumber = fabricatorNumber;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getTotalPending() {
+        return totalPending;
+    }
+
+    public void setTotalPending(String totalPending) {
+        this.totalPending = totalPending;
+    }
+
+    public String getTotalPurchase() {
+        return totalPurchase;
+    }
+
+    public void setTotalPurchase(String totalPurchase) {
+        this.totalPurchase = totalPurchase;
+    }
+
+    public String getTotalApprove() {
+        return totalApprove;
+    }
+
+    public void setTotalApprove(String totalApprove) {
+        this.totalApprove = totalApprove;
+    }
 
     public String getProductName() {
         return productName;

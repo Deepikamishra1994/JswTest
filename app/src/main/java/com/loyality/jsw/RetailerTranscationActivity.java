@@ -3,16 +3,18 @@ package com.loyality.jsw;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.loyality.jsw.adapters.EqualSpacingItemDecoration;
 import com.loyality.jsw.adapters.RetailerTransAdapter;
 import com.loyality.jsw.adapters.SizeUnitsAdapter;
 import com.loyality.jsw.common.UtilityMethods;
@@ -42,12 +44,26 @@ public class RetailerTranscationActivity extends AppCompatActivity implements Ge
     AppCompatTextView tvNoDataFound;
     @BindView(R.id.tl_header)
     TableLayout tlHeader;
+    @BindView(R.id.tv_totalPurchase)
+    AppCompatTextView tvTotalPurchase;
+    @BindView(R.id.tv_totalApprove)
+    AppCompatTextView tvTotalApprove;
+    @BindView(R.id.tv_totalPending)
+    AppCompatTextView tvTotalPending;
+    @BindView(R.id.ll_summary)
+    LinearLayout llSummary;
+    @BindView(R.id.cardView)
+    CardView cardView;
+    @BindView(R.id.tvName)
+    TextView tvName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transcation);
         ButterKnife.bind(this);
+
+        tvName.setText("Fabricator Name");
 
         tvTitle.setText("Transactions");
 
@@ -143,7 +159,7 @@ public class RetailerTranscationActivity extends AppCompatActivity implements Ge
 
         RetailerTransAdapter myHistoryAdapter = new RetailerTransAdapter(RetailerTranscationActivity.this, eventModelList);
         rlHistory.setLayoutManager(new LinearLayoutManager(this));
-      //  rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
+        //  rlHistory.addItemDecoration(new EqualSpacingItemDecoration(18));
         rlHistory.setAdapter(myHistoryAdapter);
 //JSWDB001 TT$777
     }

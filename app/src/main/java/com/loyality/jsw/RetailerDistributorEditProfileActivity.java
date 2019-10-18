@@ -496,11 +496,11 @@ public class RetailerDistributorEditProfileActivity extends AppCompatActivity im
 
             UtilityMethods.showToast(RetailerDistributorEditProfileActivity.this, "Select State");
             return false;
-        } else if (TextUtils.isEmpty(city)) {
+        } /*else if (TextUtils.isEmpty(city)) {
             UtilityMethods.showToast(RetailerDistributorEditProfileActivity.this, "Select City");
 
             return false;
-        } else if (TextUtils.isEmpty(district)) {
+        }*/ else if (TextUtils.isEmpty(district)) {
 
             UtilityMethods.showToast(RetailerDistributorEditProfileActivity.this, "Select District");
             return false;

@@ -17,8 +17,13 @@
     <string name="taluka">Taluka</string>
     <string name="district">District</string>
     <string name="address">Address</string>
+    <string name="area_assigned">Area Assigned</string>
+    <string name="assigned_mng_id">Assigned Manager ID</string>
+    <string name="assigned_mng_name">Assigned Manager Name</string>
     <string name="pincode">Pin code</string>
     <string name="submit">Submit</string>
+    <string name="acknowledge">Acknowledge</string>
+    <string name="save">Save &amp; Update</string>
     <string name="sort_by_status">Sort By Status</string>
     <string name="transcatio_id">Transaction ID - </string>
     <string name="date_sample">22-Dec-2018</string>
@@ -48,18 +53,27 @@
     <string name="write_to_us">Write to Us:</string>
     <string name="username">Sahil Goyal</string>
     <string name="add_purchase">Add Purchase</string>
+    <string name="purchase_verify">Purchase \nVerification</string>
     <string name="transcation_history">Transaction History</string>
+    <string name="add_fabricator">Add \nFabricator</string>
+    <string name="approve_fabricator">Approve \nFabricator</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="activity">Activity</string>
+    <string name="profile"> Profile\n</string>
+    <string name="activity">Activity\n</string>
+    <string name="search_partner">Search \n Partner</string>
     <string name="sale_enquiry">Sales Enquiry</string>
-    <string name="download_report">Download Report</string>
+    <string name="sale_queries">Sales\n Queries</string>
+    <string name="download_report">Download\n Report</string>
     <string name="home">Home</string>
     <string name="no_internet">No Internet Available</string>
     <string name="msg">Your details has been submitted successfully.\n  You will receive SMS and call upon registration</string>
     <string name="retailer_id">Retailer Id</string>
     <string name="tm_assinged_id">TM Assigned Id</string>
+    <string name="tm_id">TM ID</string>
     <string name="tm_name">JSW Representative</string>
-    <string name="tm_mobile">TM Mobile No.</string>
+    <string name="name_">Name</string>
+    <string name="tm_mobile">JSW Representative Mobile Number</string>
+    <string name="mobile">Mobile Number</string>
     <string name="units">Units -</string>
     <string name="total_price">Total Price</string>
     <string name="no_sheets">No. of Sheets</string>
@@ -70,8 +84,12 @@
     <string name="user_id">User Id</string>
     <string name="fabricator_nomination">Fabricator Nomination</string>
     <string name="sales_ver">Purchase Verification</string>
+    <string name="view_detail">View Details</string>
     <string name="retailer_state">Retailer State</string>
+    <string name="sort_by">Sort By</string>
     <string name="retailer_city">Retailer City</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
     <string name="retailer_district">Retailer District</string>
     <string name="total_value">Total value in tons:</string>
     <string name="sheets">Sheets-</string>
@@ -88,4 +106,34 @@
     <string name="distributor_name">Distributor Name</string>
     <string name="outlet">Outlet Name</string>
     <string name="pending">PENDING</string>
+    <string name="total_purchase">Total Purchase</string>
+    <string name="total_approved">Total Approved</string>
+    <string name="total_pending">Total Pending</string>
+
+    <string name="fabricatorId">Fabricator ID</string>
+    <string name="fabricator_name">Fabricator Name</string>
+    <string name="fabricator_no">Fabricator Number</string>
+    <string name="purchase_date">Purchase Date</string>
+    <string name="id">ID</string>
+    <string name="date">Date</string>
+    <string-array name="tm_list">
+        <item>ALL</item>
+        <item>5 METRIC TONS </item>
+        <item>7 DAYS ABOVE</item>
+
+    </string-array>
+    <string-array name="query_fliter">
+        <item>All</item>
+        <item>Pending</item>
+        <item>Acknowledge</item>
+
+    </string-array>
+    <string-array name="approve_fliter">
+        <item>ALL</item>
+        <item>APPROVED</item>
+        <item>PENDING</item>
+        <item>ONHOLD</item>
+        <item>REJECTED</item>
+
+    </string-array>
 </resources>

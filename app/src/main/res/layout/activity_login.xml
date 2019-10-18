@@ -28,7 +28,9 @@
         android:text="@string/partner_program"
         android:layout_height="wrap_content" />
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,6 +76,8 @@
             android:paddingEnd="10dp"
             android:id="@+id/etEmployeeId"
             android:textSize="15sp"
+            android:singleLine="true"
+
             android:layout_marginTop="25dp"
             android:drawableLeft="@drawable/ic_person_black_24dp"
             android:drawableStart="@drawable/ic_person_black_24dp"
@@ -97,6 +101,7 @@
             android:paddingStart="20dp"
             android:paddingLeft="20dp"
             android:paddingEnd="10dp"
+            android:singleLine="true"
             android:drawableStart="@drawable/ic_lock_black_24dp"
             android:drawableLeft="@drawable/ic_lock_black_24dp"
             android:drawablePadding="15dp"
@@ -176,5 +181,6 @@
 
 
     </LinearLayout>
+</ScrollView>
 
 </LinearLayout>

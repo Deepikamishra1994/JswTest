@@ -8,10 +8,13 @@ import com.loyality.jsw.Constants.ApplicationConstants;
 import com.loyality.jsw.common.Prefrences;
 import com.loyality.jsw.common.UtilityMethods;
 import com.loyality.jsw.serverrequesthandler.models.AddProductModel;
+import com.loyality.jsw.serverrequesthandler.models.ApproveFabricator;
 import com.loyality.jsw.serverrequesthandler.models.BillingModel;
 import com.loyality.jsw.serverrequesthandler.models.CityModel;
 import com.loyality.jsw.serverrequesthandler.models.DistrictModel;
+import com.loyality.jsw.serverrequesthandler.models.EnquiryModel;
 import com.loyality.jsw.serverrequesthandler.models.EventModel;
+import com.loyality.jsw.serverrequesthandler.models.FabricatorPurchase;
 import com.loyality.jsw.serverrequesthandler.models.ProductModel;
 import com.loyality.jsw.serverrequesthandler.models.RegisterModel;
 import com.loyality.jsw.serverrequesthandler.models.ResponseModel;
@@ -90,6 +93,41 @@ public class DispatchGetResponse {
 
                 break;
 
+            case PROFILE_BY_ID:
+                getRequest.getProfileById(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<RegisterModel>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<RegisterModel> listResponse) {
+
+                        new GetRequestCallback<>(getDispatch, listResponse, ResponseTypes.PROFILE_BY_ID, context).onResponse();
+
+                    }
+                });
+
+
+                break;
+
+
             case EVENTS:
 
                 getRequest.getEvents(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<EventModel>>>() {
@@ -127,7 +165,7 @@ public class DispatchGetResponse {
 
             case EVENT_DETAIL:
 
-                getRequest.getEventDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),""+object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<EventModel>>() {
+                getRequest.getEventDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context), "" + object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<EventModel>>() {
                     @Override
                     public void onCompleted() {
 
@@ -158,12 +196,45 @@ public class DispatchGetResponse {
                 });
 
 
+                break;
+            case FABRICATOR_PURCHASE:
+
+                getRequest.getFabricatorPurchase(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context), "" + object, String.valueOf(object2)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<TranscationModel>>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<TranscationModel>> listResponse) {
+
+                        new GetRequestCallback<>(getDispatch, listResponse, ResponseTypes.FABRICATOR_PURCHASE, context).onResponse();
+
+                    }
+                });
+
 
                 break;
 
             case RETAILER_TRANSACTIONS:
 
-                getRequest.getFabricatorTransaction(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<TranscationModel>>>() {
+                getRequest.getFabricatorTransaction(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),  String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<TranscationModel>>>() {
                     @Override
                     public void onCompleted() {
 
@@ -196,9 +267,11 @@ public class DispatchGetResponse {
 
                 break;
 
+
+
             case RETAILER_TRANSACTIONS_DETAIL:
 
-                getRequest.getFabricatorTransactionDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<AddProductModel>>() {
+                getRequest.getFabricatorTransactionDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context), String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<AddProductModel>>() {
                     @Override
                     public void onCompleted() {
 
@@ -229,12 +302,11 @@ public class DispatchGetResponse {
                 });
 
 
-
                 break;
 
             case TRANSACTIONS:
 
-                getRequest.getTransactions(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<TranscationModel>>>() {
+                getRequest.getTransactions(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context), String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<TranscationModel>>>() {
                     @Override
                     public void onCompleted() {
 
@@ -305,7 +377,7 @@ public class DispatchGetResponse {
 
             case PRODUCT_DETAIL:
 
-                getRequest.getProductDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<SizeUnitModel>>() {
+                getRequest.getProductDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context), String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<SizeUnitModel>>() {
                     @Override
                     public void onCompleted() {
 
@@ -341,7 +413,7 @@ public class DispatchGetResponse {
             case TRANSCATION_DETAIL:
 
 
-                getRequest.getProductDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<SizeUnitModel>>() {
+                getRequest.getProductDetail(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context), String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<SizeUnitModel>>() {
                     @Override
                     public void onCompleted() {
 
@@ -372,7 +444,8 @@ public class DispatchGetResponse {
                 });
 
 
-                break;
+
+            break;
 
             case PRODUCT_UNITS:
 
@@ -409,8 +482,78 @@ public class DispatchGetResponse {
 
 
                 break;
+            case SALES_QUERY:
+
+                getRequest.getSalesQueries(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<EnquiryModel>>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
 
 
+                            UtilityMethods.showToast(context, e.getMessage());
+
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<EnquiryModel>> listResponse) {
+
+                        new GetRequestCallback<>(getDispatch, listResponse, ResponseTypes.SALES_QUERY, context).onResponse();
+
+                    }
+                });
+
+
+
+                break;
+
+
+            case APPROVE_FABRICATOR:
+
+                getRequest.getApproveFabricator(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),String.valueOf(object)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<ApproveFabricator>>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<ApproveFabricator>> listResponse) {
+
+                        new GetRequestCallback<>(getDispatch, listResponse, ResponseTypes.APPROVE_FABRICATOR, context).onResponse();
+
+                    }
+                });
+
+
+
+                break;
             case RETAILERS:
 
                 getRequest.getRetailers(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),""+object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<RetailerModel>>>() {
@@ -439,6 +582,71 @@ public class DispatchGetResponse {
                     public void onNext(Response<List<RetailerModel>> listResponse) {
 
                         new GetRequestCallback<>(getDispatch, listResponse, ResponseTypes.RETAILERS, context).onResponse();
+
+                    }
+                });
+
+
+                break;
+            case SEARCH_FABRICATOR:
+
+                getRequest.getAllFabricator(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),""+object).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<List<FabricatorPurchase>>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<List<FabricatorPurchase>> listResponse) {
+
+                        new GetRequestCallback<>(getDispatch, listResponse, ResponseTypes.SEARCH_FABRICATOR, context).onResponse();
+
+                    }
+                });
+            case FABRICATOR_PROFILE:
+
+                getRequest.getFabricatorProfile(ApplicationConstants.auth_token, Prefrences.getInstance().getToken(context),""+object,""+object2).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<FabricatorPurchase>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        Log.e("tesitng exception", "" + e.getMessage());
+
+                        if (e.getMessage() != null && !TextUtils.isEmpty(e.getMessage())) {
+
+
+                            UtilityMethods.showToast(context, e.getMessage());
+
+
+                        }
+                        UtilityMethods.dismissProgressDialog();
+
+                    }
+
+                    @Override
+                    public void onNext(Response<FabricatorPurchase> listResponse) {
+
+                        new GetRequestCallback<>(getDispatch, listResponse, ResponseTypes.SEARCH_FABRICATOR, context).onResponse();
 
                     }
                 });
